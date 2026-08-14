@@ -1422,3 +1422,22 @@ footer p { margin:8px 0; font-family:"Cormorant Garamond", serif; font-size:16px
   .envelope.open .flower-spray { top: 66%; transform: scale(.68) rotate(-7deg); }
   .envelope.open .flower-right { transform: scaleX(-1) scale(.68) rotate(-7deg); }
 }
+
+
+/* Requested: hide the M&M wax seal after the envelope opens. */
+.envelope.open .wax-seal {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translate(-50%, -50%) scale(.65) !important;
+}
+
+
+/* v5 final override: M&M wax button exists only on the first/closed screen. */
+.envelope.open .wax-seal,
+.envelope.open #waxSeal {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
