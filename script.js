@@ -13,7 +13,7 @@ function openEnvelope() {
   if (opened) return;
   opened = true;
   envelope.classList.add('open');
-  tapNote.textContent = 'Tap the invitation to continue';
+  if (tapNote) tapNote.textContent = 'Tap the invitation to continue';
 }
 
 function enterInvitation() {
@@ -110,3 +110,28 @@ if ('IntersectionObserver' in window) {
 } else {
   revealEls.forEach(function (el) { el.classList.add('visible'); });
 }
+
+// Decorative petals: light enough for phones, disabled for reduced-motion users.
+(function createPetals() {
+  const field = document.getElementById('petalField');
+  if (!field || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+
+  const total = window.innerWidth <= 640 ? 11 : 15;
+  for (let i = 0; i < total; i += 1) {
+    const petal = document.createElement('span');
+    petal.className = 'petal';
+    petal.style.setProperty('--x', (4 + Math.random() * 92).toFixed(1) + '%');
+    petal.style.setProperty('--size', (7 + Math.random() * 7).toFixed(1) + 'px');
+    petal.style.setProperty('--duration', (9 + Math.random() * 7).toFixed(1) + 's');
+    petal.style.setProperty('--delay', (-Math.random() * 14).toFixed(1) + 's');
+    petal.style.setProperty('--drift', (-42 + Math.random() * 84).toFixed(1) + 'px');
+    petal.style.setProperty('--rotate', Math.floor(Math.random() * 180) + 'deg');
+    field.appendChild(petal);
+  }
+})();
+
+// A tiny celebratory pulse when the seal is tapped.
+waxSeal.addEventListener('click', function () {
+  envelope.classList.add('seal-celebrate');
+  setTimeout(function () { envelope.classList.remove('seal-celebrate'); }, 900);
+});

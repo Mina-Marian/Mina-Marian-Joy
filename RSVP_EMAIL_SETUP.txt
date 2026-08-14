@@ -1,0 +1,18 @@
+RSVP EMAIL SETUP
+
+The RSVP form sends submissions to:
+marianmories.h@gmail.com
+
+IMPORTANT:
+On the very first RSVP test, FormSubmit will send a confirmation/activation email
+to marianmories.h@gmail.com. Open that email and confirm the form once.
+After confirmation, new RSVP submissions will be emailed automatically.
+
+The form sends:
+- Full name
+- Phone number
+- Attendance choice
+- Number of guests
+- Message for the couple
+
+This works with a static GitHub Pages website.
