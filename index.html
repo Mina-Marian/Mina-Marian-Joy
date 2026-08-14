@@ -9,28 +9,63 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=immersive-mobile-2" />
+  <link rel="stylesheet" href="styles.css?v=reference-envelope-1" />
 </head>
 <body>
   <div class="opening-screen" id="openingScreen" aria-label="Wedding invitation envelope">
-    <div class="opening-glow"></div>
+    <div class="opening-glow" aria-hidden="true"></div>
     <div class="envelope-wrap" id="envelopeWrap">
       <div class="envelope" id="envelope">
         <div class="envelope-back"></div>
-        <div class="invite-preview" id="invitePreview">
-          <div class="preview-ornament preview-reveal">❦</div>
-          <p class="preview-kicker preview-reveal">&ldquo;When a husband and wife are united in marriage, they no longer seem like something earthly, but rather like the Image of God Himself.&rdquo; <span class="quote-author">&mdash; St. John Chrysostom</span></p>
-          <h1 class="preview-reveal">Mina <span>&amp;</span> Marian</h1>
-          <p class="preview-date preview-reveal">10 · 10 · 2026</p>
-          <button class="open-invite-btn preview-reveal" id="openInviteBtn" type="button">Open Invitation</button>
+
+        <div class="front-monogram" aria-hidden="true">
+          <svg class="wreath wreath-left" viewBox="0 0 120 180" focusable="false">
+            <path d="M95 164C44 137 21 91 38 32"/>
+            <path d="M45 130C30 124 21 113 17 99M54 144C39 143 28 137 20 126M39 104C26 96 18 85 17 72M36 78C24 70 19 59 20 47M43 52C33 45 30 35 34 24"/>
+            <path d="M39 127C50 119 57 108 58 96M34 102C47 95 54 84 56 72M32 76C43 69 49 60 50 49M37 51C47 45 52 37 52 28"/>
+          </svg>
+          <div class="monogram-letters"><span>M</span><b>&amp;</b><span>M</span></div>
+          <svg class="wreath wreath-right" viewBox="0 0 120 180" focusable="false">
+            <path d="M25 164C76 137 99 91 82 32"/>
+            <path d="M75 130C90 124 99 113 103 99M66 144C81 143 92 137 100 126M81 104C94 96 102 85 103 72M84 78C96 70 101 59 100 47M77 52C87 45 90 35 86 24"/>
+            <path d="M81 127C70 119 63 108 62 96M86 102C73 95 66 84 64 72M88 76C77 69 71 60 70 49M83 51C73 45 68 37 68 28"/>
+          </svg>
         </div>
+
+        <div class="invite-preview" id="invitePreview">
+          <div class="invite-border" aria-hidden="true"></div>
+          <p class="preview-kicker preview-reveal">&ldquo;When a husband and wife are united in marriage, they no longer seem like something earthly, but rather like the Image of God Himself.&rdquo;</p>
+          <p class="preview-author preview-reveal">&mdash; St. John Chrysostom</p>
+          <div class="preview-divider preview-reveal"><span>♥</span></div>
+          <h1 class="preview-reveal">Mina <span>&amp;</span> Marian</h1>
+          <p class="preview-together preview-reveal">Together with our families<br>we joyfully invite you to<br>celebrate our wedding</p>
+          <div class="preview-flourish preview-reveal">❦</div>
+          <p class="preview-date preview-reveal">10 · 10 · 2026</p>
+          <button class="open-invite-btn preview-reveal" id="openInviteBtn" type="button">View Wedding Details</button>
+        </div>
+
         <div class="envelope-left"></div>
         <div class="envelope-right"></div>
         <div class="envelope-bottom"></div>
         <div class="envelope-flap"></div>
+
+        <div class="flower-spray flower-left" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="flower-spray flower-right" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+
         <button class="wax-seal" id="waxSeal" type="button" aria-label="Open wedding invitation">
           <span>M&amp;M</span>
         </button>
+
+        <div class="closed-copy" aria-hidden="true">
+          <p class="front-date">10 · 10 · 2026</p>
+          <p class="tap-label">Tap on</p>
+          <p class="tap-mm">M&amp;M</p>
+          <p class="tiny-heart">♡</p>
+        </div>
       </div>
     </div>
   </div>
@@ -183,6 +218,6 @@
     </footer>
   </main>
 
-  <script src="script.js?v=immersive-mobile-2"></script>
+  <script src="script.js?v=reference-envelope-1"></script>
 </body>
 </html>
