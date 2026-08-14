@@ -992,3 +992,80 @@ footer p { margin:8px 0; font-family:"Cormorant Garamond", serif; font-size:16px
     -webkit-animation: sealSparkMobile .9s cubic-bezier(.15,.7,.2,1) forwards !important;
   }
 }
+
+
+/* =========================================================
+   V10 — direct opening: no intermediate paper.
+   ========================================================= */
+.invite-preview { display: none !important; }
+
+/* A subtle envelope reaction remains while the stars play, then the main page appears. */
+.envelope.direct-open .envelope-flap {
+  transform: perspective(1000px) rotateX(178deg) !important;
+  z-index: 2 !important;
+  transition: transform .48s cubic-bezier(.2,.78,.2,1) !important;
+}
+.envelope.direct-open .wax-seal,
+.envelope.direct-open #waxSeal {
+  transform: translate(-50%, -50%) scale(.86) !important;
+  opacity: .15 !important;
+  transition: transform .42s ease, opacity .42s ease !important;
+}
+
+/* Quote at the top of the main invitation page. */
+.hero-quote {
+  width: min(92%, 570px);
+  margin: 0 auto 24px;
+  padding: 0 4px;
+  color: #715b4e;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+}
+.hero-quote p {
+  margin: 0;
+  font-size: clamp(16px, 4.15vw, 21px);
+  line-height: 1.46;
+  font-style: italic;
+}
+.hero-quote span {
+  display: block;
+  margin-top: 8px;
+  color: #a5773d;
+  font-size: clamp(11px, 2.9vw, 13px);
+  letter-spacing: .05em;
+}
+
+/* Keep Mina & Marian on one line on every phone size. */
+.couple-name {
+  white-space: nowrap !important;
+  width: auto !important;
+  max-width: 100% !important;
+  font-size: clamp(46px, 13vw, 88px) !important;
+  letter-spacing: -.025em;
+}
+
+@media (max-width: 420px) {
+  .hero {
+    padding-top: 88px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .hero-quote {
+    width: 96%;
+    margin-bottom: 18px;
+  }
+  .hero-quote p {
+    font-size: clamp(14px, 3.85vw, 17px);
+    line-height: 1.42;
+  }
+  .couple-name {
+    font-size: clamp(42px, 12.2vw, 54px) !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .couple-name {
+    font-size: 40px !important;
+  }
+  .hero-quote p { font-size: 13.5px; }
+}

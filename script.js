@@ -1,66 +1,40 @@
 const envelope = document.getElementById('envelope');
 const waxSeal = document.getElementById('waxSeal');
-const openInviteBtn = document.getElementById('openInviteBtn');
 const openingScreen = document.getElementById('openingScreen');
 const mainContent = document.getElementById('mainContent');
-const tapNote = document.getElementById('tapNote');
-const invitePreview = document.getElementById('invitePreview');
 
-let opened = false;
 let entering = false;
-
-function openEnvelope() {
-  if (opened) return;
-  opened = true;
-  envelope.classList.add('open');
-  if (tapNote) tapNote.textContent = 'Tap the invitation to continue';
-}
 
 function enterInvitation() {
   if (entering) return;
   entering = true;
-  if (!opened) openEnvelope();
-  mainContent.classList.add('ready');
-  mainContent.setAttribute('aria-hidden', 'false');
-  openingScreen.classList.add('done');
-  document.body.classList.add('invitation-open');
-  // Compatible with older iPhone Safari versions.
-  setTimeout(function () { window.scrollTo(0, 0); }, 80);
+
+  // Keep the envelope visible briefly so the mobile sparkle animation is seen,
+  // but skip the old intermediate invitation paper entirely.
+  envelope.classList.add('direct-open');
+
+  window.setTimeout(function () {
+    mainContent.classList.add('ready');
+    mainContent.setAttribute('aria-hidden', 'false');
+    openingScreen.classList.add('done');
+    document.body.classList.add('invitation-open');
+    window.setTimeout(function () { window.scrollTo(0, 0); }, 60);
+  }, 520);
 }
 
-// Open the envelope ONLY when the M&M wax seal is tapped/clicked.
-waxSeal.addEventListener('click', function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-  openEnvelope();
-});
-
-// After the envelope is open, tapping the revealed invitation continues inside.
-invitePreview.addEventListener('click', function (e) {
-  if (!opened) return;
-  if (e.target === openInviteBtn) return;
-  enterInvitation();
-});
-
-openInviteBtn.addEventListener('click', function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-  enterInvitation();
-});
-
-// iPhone / Safari touch fallback: only the M&M seal can open the closed envelope.
-if ('ontouchend' in window) {
-  waxSeal.addEventListener('touchend', function (e) {
+function activateInvitation(e) {
+  if (e) {
     e.preventDefault();
     e.stopPropagation();
-    openEnvelope();
-  }, { passive: false });
+  }
+  enterInvitation();
+}
 
-  invitePreview.addEventListener('touchend', function (e) {
-    if (!opened || e.target === openInviteBtn) return;
-    e.preventDefault();
-    enterInvitation();
-  }, { passive: false });
+waxSeal.addEventListener('click', activateInvitation);
+
+// iPhone / Safari touch fallback.
+if ('ontouchend' in window) {
+  waxSeal.addEventListener('touchend', activateInvitation, { passive: false });
 }
 
 // Countdown — Cairo time (UTC+3 on 10 October 2026).
