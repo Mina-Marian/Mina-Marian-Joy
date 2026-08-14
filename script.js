@@ -1,7 +1,6 @@
 const envelope = document.getElementById('envelope');
 const waxSeal = document.getElementById('waxSeal');
 const openInviteBtn = document.getElementById('openInviteBtn');
-if (openInviteBtn) openInviteBtn.textContent = 'Open Invitation';
 const openingScreen = document.getElementById('openingScreen');
 const mainContent = document.getElementById('mainContent');
 const tapNote = document.getElementById('tapNote');
@@ -15,19 +14,6 @@ function openEnvelope() {
   opened = true;
   envelope.classList.add('open');
   if (tapNote) tapNote.textContent = 'Tap the invitation to continue';
-
-  // The M&M seal belongs only to the closed-envelope screen.
-  // Remove it completely once the opening animation has started so it can
-  // never appear on the revealed invitation screen, regardless of CSS cache.
-  if (waxSeal) {
-    waxSeal.setAttribute('aria-hidden', 'true');
-    waxSeal.style.opacity = '0';
-    waxSeal.style.visibility = 'hidden';
-    waxSeal.style.pointerEvents = 'none';
-    window.setTimeout(function () {
-      if (waxSeal && waxSeal.parentNode) waxSeal.parentNode.removeChild(waxSeal);
-    }, 450);
-  }
 }
 
 function enterInvitation() {
