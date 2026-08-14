@@ -1201,3 +1201,343 @@ footer p { margin:8px 0; font-family:"Cormorant Garamond", serif; font-size:16px
   .preview-kicker{font-size:11px}.preview-author{font-size:10px}.preview-divider{margin:10px auto 4px}
   .invite-preview h1{margin:15px 0 10px;font-size:38px}.preview-together{font-size:9px}.preview-flourish{margin-top:7px}.preview-date{margin-top:4px}
 }
+
+/* =========================================================
+   Envelope reference v2 — full card reveal above the pocket.
+   Closed state follows the phone mockup; open state keeps the
+   complete invitation visible and moves the seal to the pocket.
+   ========================================================= */
+
+/* Keep every opening layer inside one phone-sized stage. */
+.opening-screen {
+  background: #f0dfc8;
+}
+.envelope-wrap,
+.envelope {
+  width: 100%;
+  height: 100%;
+}
+.envelope {
+  isolation: isolate;
+}
+
+/* More paper-like base, with warmer gold edges. */
+.envelope-back {
+  z-index: 1;
+  background:
+    radial-gradient(circle at 20% 8%, rgba(255,255,255,.72), transparent 27%),
+    radial-gradient(circle at 75% 62%, rgba(178,127,56,.07), transparent 28%),
+    repeating-linear-gradient(18deg, rgba(124,83,40,.018) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg,#f8ead6 0%,#f0ddc2 100%);
+}
+
+/* CLOSED ENVELOPE: match the long top flap + intersecting folds. */
+.envelope-left {
+  z-index: 8;
+  clip-path: polygon(0 22%, 51% 50.5%, 0 78.5%);
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.58),transparent 46%),
+    linear-gradient(145deg,#faecd8 0%,#ead2b3 100%);
+}
+.envelope-right {
+  z-index: 8;
+  clip-path: polygon(100% 22%, 49% 50.5%, 100% 78.5%);
+  background:
+    linear-gradient(245deg,rgba(255,255,255,.58),transparent 46%),
+    linear-gradient(215deg,#faecd8 0%,#ead2b3 100%);
+}
+.envelope-bottom {
+  z-index: 9;
+  clip-path: polygon(0 78%, 50% 50%, 100% 78%, 100% 100%, 0 100%);
+  background:
+    radial-gradient(circle at 50% 105%,rgba(255,255,255,.36),transparent 45%),
+    linear-gradient(0deg,#ead1ae 0%,#f6e5ca 100%);
+}
+.envelope-flap {
+  z-index: 11;
+  transform-origin: 50% 21.5%;
+  clip-path: polygon(0 21%,100% 21%,50% 51.2%);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.64),transparent 46%),
+    linear-gradient(160deg,#f9ead5 0%,#e8cfad 100%);
+}
+
+/* Thin golden seams like the reference artwork. */
+.envelope-left::before,
+.envelope-right::before,
+.envelope-bottom::before,
+.envelope-flap::before {
+  opacity: .78;
+  filter: drop-shadow(0 1px 0 rgba(255,239,200,.5));
+}
+
+.front-monogram {
+  z-index: 14;
+  top: 8.5%;
+  width: 188px;
+  height: 154px;
+  color: #b07b36;
+}
+.monogram-letters {
+  font-size: 48px;
+}
+
+.flower-spray {
+  z-index: 15;
+  top: 32.5%;
+  height: 250px;
+  opacity: .96;
+}
+.flower-left { left: .5%; }
+.flower-right { right: .5%; }
+
+.wax-seal {
+  z-index: 22;
+  top: 50.8%;
+  width: 94px;
+  height: 94px;
+  color: #624016;
+  background:
+    radial-gradient(circle at 36% 28%,rgba(255,224,157,.78),transparent 15%),
+    radial-gradient(circle at 50% 53%,#c89248 0 47%,#9c682d 49% 62%,#c99449 64% 74%,#845523 76% 100%);
+  box-shadow:
+    0 9px 14px rgba(77,43,14,.32),
+    inset 0 2px 5px rgba(255,226,164,.8),
+    inset 0 -5px 8px rgba(75,42,15,.38),
+    0 0 0 2px rgba(123,76,28,.18);
+}
+.wax-seal span {
+  font-size: 31px;
+  color: #684318;
+}
+
+.closed-copy {
+  z-index: 16;
+  bottom: max(5.1%, calc(env(safe-area-inset-bottom) + 8px));
+}
+.front-date {
+  margin-bottom: clamp(36px,5.4vh,56px);
+  font-size: clamp(19px,5vw,23px);
+}
+.tap-label { font-size: 14px; }
+.tap-mm { font-size: 36px; }
+
+/* The invitation starts completely inside the lower pocket. */
+.invite-preview {
+  z-index: 6;
+  left: 10%;
+  right: 10%;
+  top: 10.5%;
+  bottom: auto;
+  height: 58.5%;
+  min-height: 0;
+  padding: clamp(34px,5.4vh,54px) clamp(18px,5vw,30px) clamp(42px,6vh,58px);
+  border: 1px solid rgba(174,116,43,.62);
+  background:
+    radial-gradient(circle at 20% 9%,rgba(255,255,255,.72),transparent 28%),
+    repeating-linear-gradient(14deg,rgba(132,86,36,.014) 0 1px,transparent 1px 5px),
+    linear-gradient(180deg,#fbedd8 0%,#f3dfc2 100%);
+  box-shadow: 0 16px 34px rgba(71,39,14,.18);
+  opacity: 1;
+  transform: translateY(128%);
+  overflow: visible;
+  transition: transform 1.22s cubic-bezier(.16,.79,.18,1) .18s, box-shadow .55s ease;
+}
+.invite-border {
+  inset: 13px;
+  border-color: rgba(171,112,38,.68);
+}
+
+/* Make the complete wording fit inside the card on short phones too. */
+.preview-kicker {
+  max-width: 94%;
+  font-size: clamp(11px,3.25vw,16px);
+  line-height: 1.4;
+}
+.preview-author {
+  margin-top: 7px;
+  font-size: clamp(10px,2.8vw,13px);
+}
+.preview-divider {
+  margin: clamp(9px,1.8vh,17px) auto 4px;
+}
+.invite-preview h1 {
+  margin: clamp(14px,2.6vh,25px) auto clamp(10px,1.8vh,17px);
+  font-size: clamp(39px,11vw,58px);
+}
+.preview-together {
+  font-size: clamp(9px,2.55vw,12px);
+  line-height: 1.48;
+}
+.preview-flourish {
+  margin-top: clamp(7px,1.4vh,12px);
+  font-size: 18px;
+}
+.preview-date {
+  margin-top: 5px;
+  font-size: clamp(11px,2.9vw,14px);
+}
+.open-invite-btn {
+  bottom: 14px;
+  min-height: 32px;
+  padding: 7px 13px;
+  font-size: 7.5px;
+  background: rgba(255,247,231,.88);
+}
+
+/* OPEN STATE — card is entirely ABOVE the envelope pocket. */
+.envelope.open {
+  background:
+    radial-gradient(circle at 50% 17%,rgba(244,189,87,.42),transparent 18%),
+    radial-gradient(circle at 50% 22%,rgba(130,83,30,.70),transparent 52%),
+    linear-gradient(180deg,#4e3924 0%,#8d6b3e 48%,#e9d5b7 69%,#f1dfc7 100%);
+}
+.envelope.open::after {
+  content: "✦  ·  ✧  ·  ✦  ·  ✧  ·  ✦";
+  position: absolute;
+  z-index: 4;
+  top: 5.5%;
+  left: 50%;
+  width: 92%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: rgba(255,222,149,.86);
+  font-size: 12px;
+  letter-spacing: clamp(8px,3vw,18px);
+  text-shadow: 0 0 12px rgba(255,193,76,.9), 0 0 28px rgba(255,190,67,.65);
+  animation: openTwinkle 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.envelope.open .envelope-back {
+  background:
+    radial-gradient(circle at 50% 19%,rgba(255,203,103,.34),transparent 23%),
+    radial-gradient(circle at 50% 38%,rgba(104,69,31,.16),transparent 54%),
+    linear-gradient(180deg,#5d4328 0%,#8a683d 55%,#ead4b5 70%,#f0dec5 100%);
+}
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 2;
+  opacity: .34;
+}
+
+/* Pocket drops to the lower third; it no longer covers the card. */
+.envelope.open .envelope-left {
+  z-index: 9;
+  clip-path: polygon(0 66%, 42% 77%, 0 100%);
+  background: linear-gradient(145deg,#faecd9,#ead2b3);
+}
+.envelope.open .envelope-right {
+  z-index: 9;
+  clip-path: polygon(100% 66%,58% 77%,100% 100%);
+  background: linear-gradient(215deg,#faecd9,#ead2b3);
+}
+.envelope.open .envelope-bottom {
+  z-index: 10;
+  clip-path: polygon(0 78%,50% 66%,100% 78%,100% 100%,0 100%);
+  background: linear-gradient(0deg,#ead1af,#f5e4ca);
+}
+
+.envelope.open .invite-preview {
+  z-index: 17;
+  transform: translateY(0);
+  box-shadow: 0 18px 42px rgba(45,25,10,.33), 0 0 34px rgba(255,205,111,.12);
+}
+
+/* Keep the wax seal visible like the reference and move it to the pocket. */
+.envelope.open .wax-seal {
+  z-index: 23;
+  top: 82.5%;
+  opacity: 1;
+  transform: translate(-50%,-50%) scale(.92);
+  pointer-events: none;
+  animation: none;
+  transition: top .95s cubic-bezier(.2,.75,.2,1) .16s, transform .7s ease .16s, opacity .2s ease;
+}
+
+.envelope.open .front-monogram,
+.envelope.open .closed-copy {
+  opacity: 0;
+  pointer-events: none;
+}
+.envelope.open .front-monogram { transform: translateX(-50%) translateY(-12px) scale(.95); }
+.envelope.open .closed-copy { transform: translateY(18px); }
+
+/* Flowers stay visible, but settle around the lower envelope. */
+.envelope.open .flower-spray {
+  z-index: 18;
+  top: 65.5%;
+  opacity: .92;
+  transition: top .95s cubic-bezier(.2,.75,.2,1) .12s, opacity .35s ease;
+}
+.envelope.open .flower-left { transform: rotate(-8deg) scale(.88); transform-origin: left top; }
+.envelope.open .flower-right { transform: scaleX(-1) rotate(-8deg) scale(.88); transform-origin: right top; }
+
+.envelope.open .preview-reveal { opacity: 1; transform: none; }
+.envelope.open .open-invite-btn { opacity: 1; transform: translateX(-50%); }
+
+@keyframes openTwinkle {
+  0%,100% { opacity: .46; filter: blur(.1px); }
+  50% { opacity: 1; filter: blur(0); }
+}
+
+/* Mobile is the primary layout. */
+@media (max-width: 640px) {
+  .opening-screen,
+  .envelope-wrap,
+  .envelope {
+    width: 100vw !important;
+    height: 100svh !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+  .front-monogram {
+    top: 7.2%;
+    transform: translateX(-50%) scale(.92);
+  }
+  .flower-spray { top: 32.5%; }
+  .wax-seal { top: 50.8%; width: clamp(82px,23vw,96px); height: clamp(82px,23vw,96px); }
+  .invite-preview {
+    left: 9.5%;
+    right: 9.5%;
+    top: 10.5%;
+    height: 58.5%;
+    padding-left: clamp(16px,5vw,24px);
+    padding-right: clamp(16px,5vw,24px);
+  }
+  .envelope.open .invite-preview { transform: translateY(0); }
+  .envelope.open .wax-seal { top: 82.4%; }
+  .envelope.open .flower-spray { top: 65.5%; }
+}
+
+/* Short phones: compress typography, never crop the card. */
+@media (max-height: 720px) and (max-width: 640px) {
+  .front-monogram { top: 3.7%; transform: translateX(-50%) scale(.75); transform-origin: top center; }
+  .flower-spray { top: 28.5%; transform: scale(.78) rotate(-5deg); transform-origin: left top; }
+  .flower-right { transform: scaleX(-1) scale(.78) rotate(-5deg); transform-origin: right top; }
+  .closed-copy { bottom: 2.2%; }
+  .front-date { margin-bottom: 18px; font-size: 17px; }
+  .tap-label { font-size: 10px; }
+  .tap-mm { font-size: 28px; }
+  .tiny-heart { font-size: 19px; }
+
+  .invite-preview {
+    top: 6.5%;
+    height: 61%;
+    padding-top: 28px;
+    padding-bottom: 38px;
+  }
+  .preview-kicker { font-size: 10.5px; line-height: 1.32; }
+  .preview-author { font-size: 9.5px; margin-top: 4px; }
+  .preview-divider { margin: 7px auto 2px; }
+  .invite-preview h1 { margin: 9px 0 7px; font-size: 36px; }
+  .preview-together { font-size: 8.4px; line-height: 1.35; }
+  .preview-flourish { margin-top: 4px; font-size: 15px; }
+  .preview-date { margin-top: 2px; font-size: 10px; }
+  .open-invite-btn { bottom: 8px; min-height: 27px; padding: 5px 10px; font-size: 6.8px; }
+
+  .envelope.open .wax-seal { top: 83%; transform: translate(-50%,-50%) scale(.78); }
+  .envelope.open .flower-spray { top: 66%; transform: scale(.68) rotate(-7deg); }
+  .envelope.open .flower-right { transform: scaleX(-1) scale(.68) rotate(-7deg); }
+}
