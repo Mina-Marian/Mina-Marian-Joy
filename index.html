@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6efe8" />
+  <title>Mina & Marian — Wedding Invitation</title>
+  <meta name="description" content="Mina & Marian are getting married on 10 October 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=iphone2" />
+</head>
+<body>
+  <div class="opening-screen" id="openingScreen" aria-label="Wedding invitation envelope">
+    <div class="opening-glow"></div>
+    <div class="opening-title">You’re invited</div>
+    <div class="envelope-wrap" id="envelopeWrap">
+      <div class="envelope" id="envelope">
+        <div class="envelope-back"></div>
+        <div class="invite-preview" id="invitePreview">
+          <div class="preview-ornament preview-reveal">❦</div>
+          <p class="preview-kicker preview-reveal">The Wedding Of</p>
+          <h1 class="preview-reveal">Mina <span>&</span> Marian</h1>
+          <p class="preview-date preview-reveal">10 · 10 · 2026</p>
+          <button class="open-invite-btn preview-reveal" id="openInviteBtn" type="button">Open Invitation</button>
+        </div>
+        <div class="envelope-left"></div>
+        <div class="envelope-right"></div>
+        <div class="envelope-bottom"></div>
+        <div class="envelope-flap"></div>
+        <button class="wax-seal" id="waxSeal" type="button" aria-label="Open wedding invitation">
+          <span>M&amp;M</span>
+        </button>
+      </div>
+    </div>
+    <p class="tap-note" id="tapNote">Tap M&amp;M to open</p>
+  </div>
+
+  <main id="mainContent" class="main-content" aria-hidden="true">
+    <section class="hero section-paper">
+      <div class="lace top-lace"></div>
+      <p class="eyebrow reveal">Together with their families</p>
+      <div class="tiny-flourish reveal">❦</div>
+      <h2 class="couple-name reveal">Mina <span>&</span> Marian</h2>
+      <p class="hero-copy reveal">joyfully invite you to celebrate their wedding day</p>
+      <div class="date-lockup reveal">
+        <span>Saturday</span>
+        <strong>10</strong>
+        <span>October<br>2026</span>
+      </div>
+      <p class="script-note reveal">Two hearts, one promise, one beautiful beginning.</p>
+      <a class="scroll-cue reveal" href="#details" aria-label="Scroll to wedding details">⌄</a>
+    </section>
+
+    <section class="countdown-section" aria-label="Countdown to wedding">
+      <p class="eyebrow reveal">Counting down to forever</p>
+      <h3 class="section-heading reveal">Wedding Countdown</h3>
+      <div class="countdown reveal" id="countdown">
+        <div><strong id="days">00</strong><span>Days</span></div>
+        <div><strong id="hours">00</strong><span>Hours</span></div>
+        <div><strong id="minutes">00</strong><span>Minutes</span></div>
+        <div><strong id="seconds">00</strong><span>Seconds</span></div>
+      </div>
+    </section>
+
+    <section class="details section-paper" id="details">
+      <div class="lace top-lace"></div>
+      <p class="eyebrow reveal">Wedding Details</p>
+      <h3 class="section-heading reveal">Celebrate With Us</h3>
+
+      <article class="venue-card reveal">
+        <div class="venue-icon" aria-hidden="true">
+          <svg viewBox="0 0 120 120" role="img"><path d="M60 13v22M49 24h22M37 91V51l23-16 23 16v40M24 91h72M49 91V66h22v25M19 51h18M83 51h18" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="venue-type">The Ceremony</p>
+        <h4>Saint Mary &amp; Saint Beshoy Church</h4>
+        <p class="venue-time">6:00 PM</p>
+        <p class="venue-address">New Cairo 1, Cairo Governorate 11835, Egypt</p>
+        <a class="gold-button" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Saint%20Mary%20and%20Saint%20Beshoy%20Church%20New%20Cairo%20Egypt">View Church Location</a>
+      </article>
+
+      <div class="connector reveal"><span>❦</span></div>
+
+      <article class="venue-card reveal">
+        <div class="venue-icon" aria-hidden="true">
+          <svg viewBox="0 0 120 120" role="img"><path d="M24 94h72M32 94V48h56v46M42 61h12v12H42zM66 61h12v12H66zM42 79h12v12H42zM66 79h12v12H66zM28 48l32-23 32 23M55 94V79h10v15" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="venue-type">The Reception</p>
+        <h4>Tolip El Narges Hotel &amp; SPA</h4>
+        <p class="venue-time">Following the ceremony</p>
+        <p class="venue-address">Southern 90 St., New Cairo 1, Cairo Governorate, Egypt</p>
+        <a class="gold-button" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tolip%20El%20Narges%20Hotel%20%26%20SPA%20New%20Cairo%20Egypt">View Reception Location</a>
+      </article>
+    </section>
+
+    <section class="calendar-section">
+      <p class="eyebrow reveal">Save the date</p>
+      <h3 class="section-heading reveal">10 · 10 · 2026</h3>
+      <p class="calendar-copy reveal">We can’t wait to celebrate this special day with you.</p>
+      <a class="outline-button reveal" href="wedding.ics" download>Add to Calendar</a>
+    </section>
+
+    <section class="rsvp section-paper" id="rsvp">
+      <div class="lace top-lace"></div>
+      <p class="eyebrow reveal">Kindly Respond</p>
+      <h3 class="section-heading reveal">RSVP</h3>
+      <p class="rsvp-copy reveal">Please let us know if you’ll be joining our celebration.</p>
+
+      <form class="rsvp-form reveal" name="wedding-rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+        <input type="hidden" name="form-name" value="wedding-rsvp" />
+        <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+
+        <label>Full name
+          <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+        </label>
+
+        <label>Phone number
+          <input type="tel" name="phone" autocomplete="tel" placeholder="Your phone number" />
+        </label>
+
+        <fieldset>
+          <legend>Will you attend?</legend>
+          <label class="radio-line"><input type="radio" name="attendance" value="Joyfully accepts" required /> Joyfully accepts</label>
+          <label class="radio-line"><input type="radio" name="attendance" value="Regretfully declines" /> Regretfully declines</label>
+        </fieldset>
+
+        <label>Number of guests
+          <select name="guests">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+
+        <label>Message for the couple
+          <textarea name="message" rows="4" placeholder="Leave a sweet note…"></textarea>
+        </label>
+
+        <button class="gold-button submit-button" type="submit">Send RSVP</button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="footer-monogram">M <span>&</span> M</div>
+      <p>10 October 2026</p>
+      <p class="footer-note">Made with love for a beautiful beginning.</p>
+    </footer>
+  </main>
+
+  <script src="script.js?v=iphone2"></script>
+</body>
+</html>

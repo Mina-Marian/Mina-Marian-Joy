@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mina & Marian Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:mina-marian-wedding-20261010@example.com
+DTSTAMP:20260814T150000Z
+DTSTART:20261010T150000Z
+DTEND:20261010T190000Z
+SUMMARY:Mina & Marian Wedding
+DESCRIPTION:Wedding ceremony at Saint Mary and Saint Beshoy Church at 6:00 PM. Reception at Tolip El Narges Hotel & SPA following the ceremony.
+LOCATION:Saint Mary and Saint Beshoy Church, New Cairo 1, Cairo Governorate, Egypt
+END:VEVENT
+END:VCALENDAR
