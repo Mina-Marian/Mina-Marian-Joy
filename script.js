@@ -130,8 +130,32 @@ if ('IntersectionObserver' in window) {
   }
 })();
 
-// A tiny celebratory pulse when the seal is tapped.
-waxSeal.addEventListener('click', function () {
+// Golden sparkle burst on the M&M seal.
+// Run it on pointer/touch DOWN so iPhone/Android show it before touchend opens the envelope.
+let sparkleTimer;
+let sparkleLock = false;
+function celebrateSeal() {
+  if (!waxSeal || !envelope || sparkleLock) return;
+  sparkleLock = true;
+  envelope.classList.remove('seal-celebrate');
+  // Force a reflow so the animation can replay reliably on mobile Safari.
+  void envelope.offsetWidth;
   envelope.classList.add('seal-celebrate');
-  setTimeout(function () { envelope.classList.remove('seal-celebrate'); }, 900);
+  clearTimeout(sparkleTimer);
+  sparkleTimer = setTimeout(function () {
+    envelope.classList.remove('seal-celebrate');
+    sparkleLock = false;
+  }, 950);
+}
+
+if (window.PointerEvent) {
+  waxSeal.addEventListener('pointerdown', celebrateSeal, { passive: true });
+} else {
+  waxSeal.addEventListener('touchstart', celebrateSeal, { passive: true });
+  waxSeal.addEventListener('mousedown', celebrateSeal);
+}
+
+// Keyboard/accessibility fallback.
+waxSeal.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' || e.key === ' ') celebrateSeal();
 });
